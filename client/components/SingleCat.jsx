@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
+import {deleteCatRequest} from '../actions/catActions'
+
 class SingleCat extends React.Component {
   constructor(props) {
     super(props)
@@ -15,7 +17,7 @@ class SingleCat extends React.Component {
     this.setState({cat})
   }
   toggleEdit() {
-    
+
   }
   render() {
     let {cat} = this.state
@@ -27,7 +29,7 @@ class SingleCat extends React.Component {
             <h1>{cat.name}</h1>
             <img style={{height: '30vh'}} src={cat.image_url} />
             <p>{cat.description}</p>
-            <button></button>
+            <button onClick={() => this.props.dispatch(deleteCatRequest(cat))}>Delete Me</button>
           </div>
           : <h1>No Cat!</h1>
         }

@@ -11,4 +11,18 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  let db = req.app.get('db')
+  catsDb.insertCat(req.body, db)
+    .then(cat => res.json(cat))
+    .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
+})
+
+router.delete('/:id', (req, res) => {
+  let db = req.app.get('db')
+  catsDb.deleteCat(req.params.id, db)
+    .then(() => res.sendStatus(202))
+    .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
+})
+
 module.exports = router

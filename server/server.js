@@ -13,6 +13,7 @@ server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
 server.use('/api/cats', cats)
+server.use('/api/characteristics', require('./routes/characteristicsRoute'))
 
 module.exports = function(db) {
   server.set('db', db)
