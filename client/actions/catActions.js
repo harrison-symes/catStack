@@ -42,3 +42,24 @@ export function postCatRequest (cat) {
       })
   }
 }
+
+export const deleteCatAction = (cat) => {
+  return {
+    type: 'DELETE_CAT',
+    cat
+  }
+}
+
+export const deleteCatRequest = (cat) => {
+  return (dispatch) => {
+    request
+      .delete('/api/cats/' + cat.id)
+      .end((err, res) => {
+        if (err) {
+          console.log(err)
+          return
+        }
+        dispatch(deleteCatAction(cat))
+      })
+  }
+}

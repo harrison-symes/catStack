@@ -14,7 +14,14 @@ const insertCat = (cat, db) => {
 
 }
 
+const deleteCat = (id, db) => {
+  return db('cats')
+    .where('id', id)
+    .del()
+}
+
 module.exports = {
   getCats,
-  insertCat
+  insertCat,
+  deleteCat
 }
