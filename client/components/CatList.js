@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import CatPreview from './CatPreview'
 import {getCatsRequest} from '../actions/catActions'
+import {Link} from 'react-router-dom'
 
 class CatList extends React.Component {
   constructor(props) {

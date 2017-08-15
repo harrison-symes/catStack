@@ -15,7 +15,7 @@ class SingleCat extends React.Component {
     this.setState({cat})
   }
   toggleEdit() {
-    
+
   }
   render() {
     let {cat} = this.state
@@ -27,7 +27,7 @@ class SingleCat extends React.Component {
             <h1>{cat.name}</h1>
             <img style={{height: '30vh'}} src={cat.image_url} />
             <p>{cat.description}</p>
-            <button></button>
+            <button>Edit</button>
           </div>
           : <h1>No Cat!</h1>
         }
