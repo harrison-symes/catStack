@@ -63,3 +63,26 @@ export const deleteCatRequest = (cat) => {
       })
   }
 }
+
+export const editCatAction = (oldCat, newCat) => {
+  return {
+    type: 'EDIT_CAT',
+    oldCat,
+    newCat
+  }
+}
+
+export const editCatRequest = (oldCat, newCat) => {
+  return (dispatch) => {
+    request
+      .put('/api/cats/' + oldCat.id)
+      .send(newCat)
+      .end((err, res) => {
+        if (err) {
+          console.log(err)
+          return
+        }
+        dispatch(editCatAction(oldCat, res.body))
+      })
+  }
+}
