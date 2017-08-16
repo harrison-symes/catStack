@@ -82,7 +82,7 @@ export const editCatRequest = (oldCat, newCat) => {
           console.log(err)
           return
         }
-        dispatch(editCatAction(oldCat, res.body))
+        dispatch(getCatsRequest())
       })
   }
 }
