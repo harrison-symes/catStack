@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
 
-import cats from './cats'
-import characteristics from './characteristics'
+import heroes from './heroes'
+import cartoons from './cartoons'
 
 export default combineReducers({
-  cats,
-  characteristics
+  heroes,
+  cartoons
 })

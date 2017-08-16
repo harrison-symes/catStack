@@ -5,6 +5,7 @@ import CatList from './CatList'
 import SingleCat from './SingleCat'
 import CreateCat from './CreateCat'
 import CreateCharacteristic from './CreateCharacteristic'
+import HeroesList from './HeroesList'
 
 import {getCharacteristicsRequest} from '../actions/charactersticActions'
 
@@ -27,6 +28,7 @@ class App extends React.Component {
       <Router>
         <div className='app-container'>
           <h1>Hello Cats</h1>
+          <HeroesList />
 
           <Route exact path='/' component={() => <button name="showCatForm" onClick={this.toggleForm.bind(this)}>{this.state.showCatForm ? 'Cancel' : 'Create Cat'}</button>} />
           {this.state.showCatForm && <Route exact path="/" component={CreateCat} /> }
