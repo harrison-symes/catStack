@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
+import EditCat from './EditCat'
 import {deleteCatRequest} from '../actions/catActions'
 
 class SingleCat extends React.Component {
@@ -17,7 +18,7 @@ class SingleCat extends React.Component {
     this.setState({cat})
   }
   toggleEdit() {
-
+    this.setState({showEdit: !this.state.showEdit})
   }
   render() {
     let {cat} = this.state
@@ -25,12 +26,18 @@ class SingleCat extends React.Component {
       <div className="catContainer">
         <Link to='/'>Home</Link>
         {cat
-          ? <div className="SingleCat">
-            <h1>{cat.name}</h1>
-            <img style={{height: '30vh'}} src={cat.image_url} />
-            <p>{cat.description}</p>
-            <button onClick={() => this.props.dispatch(deleteCatRequest(cat))}>Delete Me</button>
-          </div>
+          ? (<div>
+            {this.state.showEdit
+              ? <EditCat cat={cat} submit={this.toggleEdit.bind(this)}/>
+              : (<div className="SingleCat">
+                <h1>{cat.name}</h1>
+                <img style={{height: '30vh'}} src={cat.image_url} />
+                <p>{cat.description}</p>
+                <button onClick={() => this.props.dispatch(deleteCatRequest(cat))}>Delete Me</button>
+              </div>)
+            }
+            <button onClick={this.toggleEdit.bind(this)}>{this.state.showEdit ? 'Cancel Edit' : 'Edit Me'}</button>
+          </div>)
           : <h1>No Cat!</h1>
         }
       </div>

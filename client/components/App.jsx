@@ -5,7 +5,7 @@ import CatList from './CatList'
 import SingleCat from './SingleCat'
 import CreateCat from './CreateCat'
 import CreateCharacteristic from './CreateCharacteristic'
-
+import {getCatsRequest} from '../actions/catActions'
 import {getCharacteristicsRequest} from '../actions/charactersticActions'
 
 class App extends React.Component {
@@ -18,6 +18,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.props.dispatch(getCharacteristicsRequest())
+    this.props.dispatch(getCatsRequest())
   }
   toggleForm(e) {
     this.setState({[e.target.name]: !this.state[e.target.name]})
