@@ -1,11 +1,11 @@
-var path = require('path')
-var express = require('express')
-var bodyParser = require('body-parser')
-var cors = require('cors')
+const path = require('path')
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 var cats = require('./routes/catsRoute')
 
-var server = express()
+const server = express()
 
 server.use(cors('*'))
 
@@ -15,7 +15,4 @@ server.use(express.static(path.join(__dirname, '../public')))
 server.use('/api/cats', cats)
 server.use('/api/characteristics', require('./routes/characteristicsRoute'))
 
-module.exports = function(db) {
-  server.set('db', db)
-  return server
-}
+module.exports = server

@@ -1,10 +1,11 @@
+const db = require('./connection')
 
-function getCharacteristics (db) {
-  return db('characteristics')
+function getCharacteristics (testDb) {
+  return (testDb || db)('characteristics')
 }
 
-function insertCharacteristic (characteristic, db) {
-  return db('characteristics')
+function insertCharacteristic (characteristic, testDb) {
+  return (testDb || db)('characteristics')
     .insert(characteristic)
     .then(characteristic_id => {
       return db('characteristics')
